@@ -1,0 +1,166 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Events\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-11 15:44+0000\n"
+"PO-Revision-Date: 2022-05-11 15:51+0000\n"
+"Last-Translator: Say Hello GmbH\n"
+"Language-Team: Deutsch (Sie)\n"
+"Language: de_DE_formal\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.1; wp-5.9.3\n"
+"X-Domain: shp-events"
+
+#: src/Plugin.php:74
+msgid "Add New"
+msgstr "Erstellen"
+
+#: src/Plugin.php:75
+msgid "Add new event"
+msgstr "Erstellen"
+
+#: src/Plugin.php:73
+msgctxt "Add New on Toolbar"
+msgid "Event"
+msgstr "Veranstaltung"
+
+#: src/Plugin.php:72
+msgctxt "Admin Menu text"
+msgid "Events"
+msgstr "Veranstaltungen"
+
+#: src/Plugin.php:79
+msgid "All events"
+msgstr "Alle Veranstaltungen"
+
+#: src/Plugin.php:77
+msgid "Edit event"
+msgstr "Veranstaltung bearbeiten"
+
+#. Name of the plugin
+msgid "Events"
+msgstr "Veranstaltungen"
+
+#. URI of the plugin
+msgid "https://github.com/SayHelloGmbH/shp-events"
+msgstr "https://github.com/SayHelloGmbH/shp-events"
+
+#. Author URI of the plugin
+msgid "https://sayhello.ch/"
+msgstr "https://sayhello.ch/"
+
+#: src/Plugin.php:76
+msgid "New event"
+msgstr "Veranstaltung erstellen"
+
+#: src/Plugin.php:83
+msgid "No events found in Trash."
+msgstr "Keine Veranstaltungen in den Papierkorb"
+
+#: src/Plugin.php:82
+msgid "No events found."
+msgstr "Keine Veranstaltungen gefunden."
+
+#: src/Plugin.php:84
+msgctxt ""
+"Overrides the “Featured Image” phrase for this post type. Added in 4.3"
+msgid "Event cover image"
+msgstr "Beitragsbild der Veranstaltung"
+
+#: src/Plugin.php:89
+msgctxt ""
+"Overrides the “Insert into post”/”Insert into page” phrase (used when "
+"inserting media into a post). Added in 4.4"
+msgid "Insert into event"
+msgstr "In die Veranstaltung einfügen"
+
+#: src/Plugin.php:86
+msgctxt ""
+"Overrides the “Remove featured image” phrase for this post type. Added in 4.3"
+msgid "Remove cover image"
+msgstr "Beitragsbild entfernen"
+
+#: src/Plugin.php:85
+msgctxt ""
+"Overrides the “Set featured image” phrase for this post type. Added in 4.3"
+msgid "Set cover image"
+msgstr "Beitragsbild festlegen"
+
+#: src/Plugin.php:90
+msgctxt ""
+"Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used "
+"when viewing media attached to a post). Added in 4.4"
+msgid "Uploaded to this event"
+msgstr "Für diese Veranstaltung hochgeladen"
+
+#: src/Plugin.php:87
+msgctxt ""
+"Overrides the “Use as featured image” phrase for this post type. Added in 4.3"
+msgid "Use as cover image"
+msgstr "Als Beitragsbild festlegen"
+
+#: src/Plugin.php:81
+msgid "Parent events:"
+msgstr "Übergeordnete Veranstaltungen:"
+
+#. Description of the plugin
+msgid ""
+"Plugin for the management of events. The output of the events should be "
+"managed by the theme: the plugin contains no views."
+msgstr ""
+"Plugin für die Verwaltung von Veranstaltungen. Die Ausgabe erfolgt durch das "
+"Theme: das Plugin beinhaltet keine Templates."
+
+#: src/Plugin.php:70
+msgctxt "Post type general name"
+msgid "Events"
+msgstr "Veranstaltungen"
+
+#: src/Plugin.php:71
+msgctxt "Post type singular name"
+msgid "Event"
+msgstr "Veranstaltung"
+
+#. Author of the plugin
+msgid "Say Hello GmbH"
+msgstr "Say Hello GmbH"
+
+#: src/Plugin.php:91
+msgctxt ""
+"Screen reader text for the filter links heading on the post type listing "
+"screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4"
+msgid "Filter events list"
+msgstr "Veranstaltungsliste filtrieren"
+
+#: src/Plugin.php:93
+msgctxt ""
+"Screen reader text for the items list heading on the post type listing "
+"screen. Default “Posts list”/”Pages list”. Added in 4.4"
+msgid "Events list"
+msgstr "Liste der Veranstaltungen"
+
+#: src/Plugin.php:92
+msgctxt ""
+"Screen reader text for the pagination heading on the post type listing "
+"screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4"
+msgid "Events list navigation"
+msgstr "Listennavigation Veranstaltungen"
+
+#: src/Plugin.php:80
+msgid "Search events"
+msgstr "Veranstaltungen durchsuchen"
+
+#: src/Plugin.php:88
+msgctxt ""
+"The post type archive label used in nav menus. Default “Post Archives”. "
+"Added in 4.4"
+msgid "Event archives"
+msgstr "Veranstaltungsarchiv"
+
+#: src/Plugin.php:78
+msgid "View event"
+msgstr "Veranstaltung anschauen"
