@@ -1,0 +1,23 @@
+{
+	"name": "shb_events",
+	"description": "Plugin for the management of events. The output of the events should be managed by the theme: the plugin contains no views.",
+	"keywords": [
+		"wordpress",
+		"plugin"
+	],
+	"version": "0.0.1",
+	"homepage": "#",
+	"license": "GPL-3.0+",
+	"authors": [
+		{
+			"name": "Mark Howells-Mead",
+			"email": "mark@sayhello.ch",
+			"homepage": "https://sayhello.ch/"
+		}
+	],
+	"type": "wordpress-plugin",
+	"require": {
+		"php": ">=8.0.0",
+		"composer/installers": "v1.7.0"
+	}
+}
