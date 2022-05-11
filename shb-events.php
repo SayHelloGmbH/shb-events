@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name:       Events
- * Plugin URI:        #
+ * Plugin URI:        https://github.com/SayHelloGmbH/shb-events
  * Description:       Plugin for the management of events. The output of the events should be managed by the theme: the plugin contains no views.
  * Author:            Mark Howells-Mead (mark@sayhello.ch)
  * Version:           0.0.1
