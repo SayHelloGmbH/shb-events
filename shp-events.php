@@ -1,12 +1,12 @@
 <?php
 /*
  * Plugin Name:       Events
- * Plugin URI:        https://github.com/SayHelloGmbH/shb-events
+ * Plugin URI:        https://github.com/SayHelloGmbH/shp-events
  * Description:       Plugin for the management of events. The output of the events should be managed by the theme: the plugin contains no views.
  * Author:            Mark Howells-Mead (mark@sayhello.ch)
  * Version:           0.0.1
  * Author URI:        https://sayhello.ch/
- * Text Domain:       shb-events
+ * Text Domain:       shp-events
  * Domain Path:       /languages
  * Requires at least: 5.9
  * Requires PHP:      8.0
@@ -15,7 +15,7 @@
  * Update URI:        https://sayhello.ch/
  */
 
-namespace SayHello\ShbEvents;
+namespace SayHello\ShpEvents;
 
 /*
  * This lot auto-loads a class or trait just when you need it. You don't need to
@@ -29,7 +29,7 @@ namespace SayHello\ShbEvents;
 spl_autoload_register(function ($class) {
 
 	// project-specific namespace prefix
-	$prefix = 'SayHello\\ShbEvents\\';
+	$prefix = 'SayHello\\ShpEvents\\';
 
 	// base directory for the namespace prefix
 	$base_dir = __DIR__ . '/src/';
@@ -55,9 +55,9 @@ spl_autoload_register(function ($class) {
 	}
 });
 
-function shb_events_get_instance()
+function sayhello_plugin_events_get_instance()
 {
 	return Plugin::getInstance(__FILE__);
 }
 
-shb_events_get_instance();
+sayhello_plugin_events_get_instance();

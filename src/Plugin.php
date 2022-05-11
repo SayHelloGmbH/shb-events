@@ -1,8 +1,8 @@
 <?php
 
-namespace SayHello\ShbEvents;
+namespace SayHello\ShpEvents;
 
-use function SayHello\ShbEvents\shb_events_get_instance;
+use function SayHello\ShpEvents\sayhello_plugin_events_get_instance;
 
 class Plugin
 {
@@ -59,7 +59,7 @@ class Plugin
 			$data = get_plugin_data($file);
 
 			self::$instance->name = $data['Name'];
-			self::$instance->prefix = 'shb_events';
+			self::$instance->prefix = 'shp_events';
 			self::$instance->version = $data['Version'];
 			self::$instance->file = $file;
 
