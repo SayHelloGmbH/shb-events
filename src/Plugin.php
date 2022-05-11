@@ -1,8 +1,6 @@
 <?php
 
-namespace SayHello\shbEvents;
-
-use function SayHello\shbEvents\shb_events_get_instance;
+namespace SayHello\ShpEvents;
 
 class Plugin
 {
@@ -11,34 +9,6 @@ class Plugin
 	public $prefix = '';
 	public $version = '';
 	public $file = '';
-
-	/**
-	 * Loads and initializes the provided classes.
-	 *
-	 * @param $classes
-	 */
-	private function loadClasses($classes)
-	{
-		foreach ($classes as $class) {
-			$class_parts = explode('\\', $class);
-			$class_short = end($class_parts);
-			$class_set   = $class_parts[count($class_parts) - 2];
-
-			if (!isset(shb_events_get_instance()->{$class_set}) || !is_object(shb_events_get_instance()->{$class_set})) {
-				shb_events_get_instance()->{$class_set} = new \stdClass();
-			}
-
-			if (property_exists(shb_events_get_instance()->{$class_set}, $class_short)) {
-				wp_die(sprintf(__('A problem has ocurred in the Theme. Only one PHP class named “%1$s” may be assigned to the “%2$s” object in the Theme.', 'sht'), $class_short, $class_set), 500);
-			}
-
-			shb_events_get_instance()->{$class_set}->{$class_short} = new $class();
-
-			if (method_exists(shb_events_get_instance()->{$class_set}->{$class_short}, 'run')) {
-				shb_events_get_instance()->{$class_set}->{$class_short}->run();
-			}
-		}
-	}
 
 	/**
 	 * Creates an instance if one isn't already available,
@@ -59,7 +29,7 @@ class Plugin
 			$data = get_plugin_data($file);
 
 			self::$instance->name = $data['Name'];
-			self::$instance->prefix = 'shb_events';
+			self::$instance->prefix = 'shp_events';
 			self::$instance->version = $data['Version'];
 			self::$instance->file = $file;
 
@@ -74,15 +44,8 @@ class Plugin
 	 */
 	private function run()
 	{
-
-		// Load individual pattern classes which contain
-		// grouped functionality. E.g. everything to do with a post type.
-		$this->loadClasses(
-			[
-				Pattern\Example::class,
-			]
-		);
-
+		add_action('init', [$this, 'registerPostType']);
+		add_action('init', [$this, 'addCapabilities']);
 		add_action('plugins_loaded', array($this, 'loadPluginTextdomain'));
 	}
 
@@ -91,6 +54,99 @@ class Plugin
 	 */
 	public function loadPluginTextdomain()
 	{
-		load_plugin_textdomain('shb_events', false, dirname(plugin_basename($this->file)) . '/languages');
+		load_plugin_textdomain('shp-events', false, dirname(plugin_basename($this->file)) . '/languages');
+	}
+
+	/**
+	 * Registers the custom post type
+	 * @return void
+	 */
+	public function registerPostType()
+	{
+
+		$labels = apply_filters(
+			'shp-events_post_type_labels',
+			[
+				'name'                  => _x('Events', 'Post type general name', 'shp-events'),
+				'singular_name'         => _x('Event', 'Post type singular name', 'shp-events'),
+				'menu_name'             => _x('Events', 'Admin Menu text', 'shp-events'),
+				'name_admin_bar'        => _x('Event', 'Add New on Toolbar', 'shp-events'),
+				'add_new'               => __('Add New', 'shp-events'),
+				'add_new_item'          => __('Add new event', 'shp-events'),
+				'new_item'              => __('New event', 'shp-events'),
+				'edit_item'             => __('Edit event', 'shp-events'),
+				'view_item'             => __('View event', 'shp-events'),
+				'all_items'             => __('All events', 'shp-events'),
+				'search_items'          => __('Search events', 'shp-events'),
+				'parent_item_colon'     => __('Parent events:', 'shp-events'),
+				'not_found'             => __('No events found.', 'shp-events'),
+				'not_found_in_trash'    => __('No events found in Trash.', 'shp-events'),
+				'featured_image'        => _x('Event cover image', 'Overrides the “Featured Image” phrase for this post type. Added in 4.3', 'shp-events'),
+				'set_featured_image'    => _x('Set cover image', 'Overrides the “Set featured image” phrase for this post type. Added in 4.3', 'shp-events'),
+				'remove_featured_image' => _x('Remove cover image', 'Overrides the “Remove featured image” phrase for this post type. Added in 4.3', 'shp-events'),
+				'use_featured_image'    => _x('Use as cover image', 'Overrides the “Use as featured image” phrase for this post type. Added in 4.3', 'shp-events'),
+				'archives'              => _x('Event archives', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'shp-events'),
+				'insert_into_item'      => _x('Insert into event', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'shp-events'),
+				'uploaded_to_this_item' => _x('Uploaded to this event', 'Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4', 'shp-events'),
+				'filter_items_list'     => _x('Filter events list', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'shp-events'),
+				'items_list_navigation' => _x('Events list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'shp-events'),
+				'items_list'            => _x('Events list', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'shp-events'),
+			]
+		);
+
+		$capabilities = apply_filters('shp-events_post_type_capabilities', [
+			'read' => 'read_shp_event',
+			'edit_post' => 'edit_shp_event',
+			'read_post' => 'read_shp_event',
+			'delete_post' => 'delete_shp_event',
+			'edit_posts' => 'edit_shp_event',
+			'edit_others_posts' => 'edit_others_shp_event',
+			'publish_posts' => 'publish_shp_event',
+			'read_private_posts' => 'read_private_shp_event',
+			'delete_posts' => 'delete_shp_event',
+			'delete_private_posts' => 'delete_private_shp_event',
+			'delete_published_posts' => 'delete_published_shp_event',
+			'delete_others_posts' => 'delete_others_shp_event',
+			'edit_private_posts' => 'edit_private_shp_event',
+			'edit_published_posts' => 'edit_published_shp_event',
+		]);
+
+		$args = apply_filters('shp-events_post_type_args', [
+			'can_export' => false,
+			'capabilities'	=> $capabilities,
+			'has_archive' => false,
+			'map_meta_cap' => false,
+			'menu_icon' => 'dashicons-calendar-alt',
+			'public' => false,
+			'show_in_admin_bar' => true,
+			'show_in_nav_menus' => true,
+			'show_in_rest' => true,
+			'show_ui' => true,
+			'menu_position' => 5,
+			'rewrite' => [
+				'slug' => 'event'
+			],
+			'supports' => ['title', 'editor', 'author', 'excerpt', 'page-attributes', 'thumbnail', 'custom-fields'],
+			'taxonomies' => [],
+			'labels' => $labels
+		]);
+
+		register_post_type('shp_event', $args);
+	}
+
+	/**
+	 * Add user capabilities
+	 */
+	public function addCapabilities()
+	{
+		$admin = get_role('administrator');
+		$admin->add_cap('edit_shp_event');
+		$admin->add_cap('delete_shp_event');
+		$admin->add_cap('read_shp_event');
+		$admin->add_cap('publish_shp_event');
+		$admin->add_cap('edit_shp_events');
+		$admin->add_cap('delete_shp_events');
+		$admin->add_cap('read_shp_events');
+		$admin->add_cap('publish_shp_events');
 	}
 }
