@@ -54,6 +54,6 @@ class Plugin
 	 */
 	public function loadPluginTextdomain()
 	{
-		load_plugin_textdomain('shb_events', false, dirname(plugin_basename($this->file)) . '/languages');
+		load_plugin_textdomain('shp_events', false, dirname(plugin_basename($this->file)) . '/languages');
 	}
 }
