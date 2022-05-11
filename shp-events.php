@@ -3,7 +3,7 @@
  * Plugin Name:       Events
  * Plugin URI:        https://github.com/SayHelloGmbH/shp-events
  * Description:       Plugin for the management of events. The output of the events should be managed by the theme: the plugin contains no views.
- * Author:            Mark Howells-Mead (mark@sayhello.ch)
+ * Author:            Say Hello GmbH
  * Version:           0.0.1
  * Author URI:        https://sayhello.ch/
  * Text Domain:       shp-events
