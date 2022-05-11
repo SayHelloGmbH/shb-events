@@ -1,8 +1,8 @@
 <?php
 
-namespace SayHello\shbEvents;
+namespace SayHello\ShbEvents;
 
-use function SayHello\shbEvents\shb_events_get_instance;
+use function SayHello\ShbEvents\shb_events_get_instance;
 
 class Plugin
 {

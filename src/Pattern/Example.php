@@ -1,9 +1,9 @@
 <?php
 
-namespace SayHello\shbEvents\Pattern;
+namespace SayHello\ShbEvents\Pattern;
 
 // Use function from plugin top-level namespace
-use function \SayHello\shbEvents\shb_events_get_instance;
+use function \SayHello\ShbEvents\shb_events_get_instance;
 
 /**
  * Example child class

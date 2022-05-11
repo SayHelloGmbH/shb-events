@@ -15,7 +15,7 @@
  * Update URI:        https://sayhello.ch/
  */
 
-namespace SayHello\shbEvents;
+namespace SayHello\ShbEvents;
 
 require_once 'src/Plugin.php';
 
